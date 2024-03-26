@@ -7,6 +7,6 @@ module = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
     config={
-        'app_name': "StorageByHTTP"
+        'app_name': "TF-IDF_APP"
     }
 )
