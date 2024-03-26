@@ -12,10 +12,10 @@ TF-IDF APP - это WEB приложение для вычисления TF и I
 
 ## Установка
 1. Клонируйте репозиторий: `git clone https://github.com/artm44/TF-IDF_APP.git`
-2. Создайте виртуальное окружение: `python -m venv env`
+2. Создайте виртуальное окружение: `python -m venv venv`
 3. Активируйте виртуальное окружение:
-- На Windows: `env\Scripts\activate`
-- На Linux/Mac: `source env/bin/activate`
+- На Windows: `venv\Scripts\activate`
+- На Linux/Mac: `source venv/bin/activate`
 4. Установите зависимости: `pip install -r requirements.txt`
 5. Запустите приложение: `python run.py`
 
