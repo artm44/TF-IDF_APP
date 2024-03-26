@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DOCUMENTS TF-IDF API",
+    "description": "API для работы с документами для TF-IDF",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Document"
+    }
+  ],
+  "paths": {
+    "/document": {
+      "get": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "Получение списка документов",
+        "responses": {
+          "200": {
+            "description": "Успешный запрос"
+          },
+          "404": {
+            "description": "Документы не найдены"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "Загрузка документа",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешная загрузка"
+          },
+          "400": {
+            "description": "Некорректный запрос"
+          },
+          "500": {
+            "description": "Проблема с базой данных"
+          }
+        }
+      }
+    },
+    "/document/{doc_id}": {
+      "delete": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "Удаление документа",
+        "parameters": [
+          {
+            "name": "doc_id",
+            "in": "path",
+            "required": true,
+            "description": "ID документа для удаления",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешное удаление"
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "500": {
+            "description": "Проблема с базой данных"
+          }
+        }
+      }
+    }
+  }
+}

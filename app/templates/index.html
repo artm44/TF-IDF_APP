@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Frequency Analysis</title>
+    <style>
+        .word-column {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    {% if not words %}
+    <h1>Word Frequency Analysis</h1>
+
+    <form action="/tfidf" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% else %}
+    <h2>Word Frequency Table</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th class="word-column">Word</th>
+                <th>TF</th>
+                <th>IDF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word, tf, idf in words %}
+            <tr>
+                <td class="word-column">{{ word }}</td>
+                <td>{{ tf }}</td>
+                <td>{{ idf }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <form action="/" method="get" enctype="multipart/form-data">
+        <button type="submit">New file</button>
+    </form>
+
+    {% endif %}
+</body>
+</html>
